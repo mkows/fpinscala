@@ -1,22 +1,25 @@
 PART 1: INTRODUCTION TO FUNCTIONAL PROGRAMMING
 - 1 What is functional programming?
-~ 2 Getting Started with functional programming in Scala
-  3 Functional data structures
-  4 Handling errors without exceptions
-  5 Strictness and laziness
-  6 Purely functional state
+~ 2 [gettingstarted]  Getting Started with functional programming in Scala
+  3 [datastructures]  Functional data structures
+  4 [errorhandling]   Handling errors without exceptions
+  5 [laziness]        Strictness and laziness
+  6 [state]           Purely functional state
 
 PART 2: FUNCTIONAL DESIGN AND COMBINATOR LIBRARIES
-  7 Purely functional parallelism
-  8 Property-based testing
-  9 Parser combinators
+  7 [parallelism] Purely functional parallelism
+  8 [testing]     Property-based testing
+  9 [parsing]     Parser combinators
 
 PART 3: COMMON STRUCTURES IN FUNCTIONAL DESIGN
-  10 Monoids
-  11 Monads
-  12 Applicative and traversable functors
+  10 [monoids]     Monoids
+  11 [monads]      Monads
+  12 [applicative] Applicative and traversable functors
 
 PART 4: EFFECTS AND I/O
-  13 External effects and I/O
-  14 Local effects and mutable state
+  13 [iomonad]     External effects and I/O
+  14 [localeffect]  Local effects and mutable state
   15 Stream processing and incremental I/O
+
+
+[structuringprograms]?
