@@ -89,7 +89,23 @@ object List { // `List` companion object. Contains functions for creating and wo
 
   def length2[A](l: List[A]): Int = foldRight(l, 0)((_, y) => 1 + y)
 
-  def foldLeft[A,B](l: List[A], z: B)(f: (B, A) => B): B = sys.error("todo")
+  def length3[A](l: List[A]): Int = foldRight(l, 0) {
+    (_, y) => 1 + y
+  }
+
+  def foldLeft[A,B](l: List[A], z: B)(f: (B, A) => B): B = {
+    def loop(acc: B, ls: List[A], stack: List[A]): B = ls match {
+      case Nil => stack match {
+        case Nil => acc
+        case Cons(s, ss) => loop(f(acc, s), Nil, ss)
+      }
+      case Cons(x, xs) => loop(acc, xs, Cons(x, stack))
+    }
+    l match {
+      case Nil => z
+      case Cons(x, xs) => loop(z, xs, Cons(x, Nil))
+    }
+  }
 
   def map[A,B](l: List[A])(f: A => B): List[B] = sys.error("todo")
 }
