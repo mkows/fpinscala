@@ -40,6 +40,20 @@ object List { // `List` companion object. Contains functions for creating and wo
       case Cons(x, xs) => f(x, foldRight(xs, z)(f))
     }
   
+  def foldRight_rec[A,B](l: List[A], z: B)(f: (A, B) => B): B = {
+    def loop(acc: B, ls: List[A], stack: List[A]): B = ls match {
+      case Nil => stack match {
+        case Nil => acc
+        case Cons(s, ss) => loop(f(s, acc), Nil, ss)
+      }
+      case Cons(x, xs) => loop(acc, xs, Cons(x, stack))
+    }
+    l match {
+      case Nil => z
+      case Cons(x, xs) => loop(z, xs, Cons(x, Nil))
+    }
+  }
+
   def sum2(ns: List[Int]) = 
     foldRight(ns, 0)((x,y) => x + y)
   
@@ -94,16 +108,13 @@ object List { // `List` companion object. Contains functions for creating and wo
   }
 
   def foldLeft[A,B](l: List[A], z: B)(f: (B, A) => B): B = {
-    def loop(acc: B, ls: List[A], stack: List[A]): B = ls match {
-      case Nil => stack match {
-        case Nil => acc
-        case Cons(s, ss) => loop(f(acc, s), Nil, ss)
-      }
-      case Cons(x, xs) => loop(acc, xs, Cons(x, stack))
+    def loop(acc: B, ls: List[A]): B = ls match {
+      case Nil => acc
+      case Cons(x, xs) => loop(f(acc, x), xs)
     }
     l match {
       case Nil => z
-      case Cons(x, xs) => loop(z, xs, Cons(x, Nil))
+      case Cons(x, xs) => loop(f(z, x), xs)
     }
   }
 
