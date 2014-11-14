@@ -39,3 +39,18 @@ why
   8 2
   10 1
   res2: Int = 11
+
+## covariance
+trait List[+A]
+// A is covariant parameter of List
+// meaning List[Dog] is considered a subtype of List[Animal], given Dog is a subtype of Animal.
+
+trait List[A] 
+// List is invariant in that type parameter
+
+// as Nil extends List[Nothing]
+// and Nothing is a subtype of all types
+// covariance in parameter A results in List[Nothing] being a subtype List[Int]
+
+## parameter type: B >: A
+B must be equal to or a supertype of A
