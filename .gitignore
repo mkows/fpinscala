@@ -6,3 +6,5 @@ project/boot
 .history
 project.vim
 *.old
+.DS_Store
+
